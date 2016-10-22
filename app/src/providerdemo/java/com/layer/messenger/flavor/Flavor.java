@@ -9,7 +9,9 @@ import com.layer.sdk.LayerClient;
 
 public class Flavor implements App.Flavor {
     // Set your Layer App ID from your Layer developer dashboard to bypass the QR-Code scanner.
-    private final static String LAYER_APP_ID = null;
+
+    //JIA's project app
+    private static final String LAYER_APP_ID = "layer:///apps/staging/6178a72e-4e8d-11e6-aca9-940102005074";
     private final static String GCM_SENDER_ID = "748607264448";
 
     private String mLayerAppId;
@@ -68,7 +70,7 @@ public class Flavor implements App.Flavor {
         String appId = getLayerAppId();
         if (appId == null) return null;
 
-        options.googleCloudMessagingSenderId(GCM_SENDER_ID);
+        options.useFirebaseCloudMessaging(true);
         return LayerClient.newInstance(context, appId, options);
     }
 
